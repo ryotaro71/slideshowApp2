@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var GoAndStopTitle: UIButton!
     
+   
+    
     
     var timer: Timer?
 
@@ -44,6 +46,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        
 //        myImageViewの初期値
         myImageView.image = image1
     }
@@ -62,6 +65,10 @@ class ViewController: UIViewController {
         } else {
             nextViewController.image6 = image5
         }
+         timer?.invalidate()
+        GOorStop = 1
+         GoAndStopTitle.setTitle("再生", for: .normal)
+        
     }
     
     
@@ -109,8 +116,12 @@ class ViewController: UIViewController {
         
     }
     
+    
+    
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
-        
+        if GOorStop == 1 {
+            timer?.invalidate()
+        }
     }
 
 }
